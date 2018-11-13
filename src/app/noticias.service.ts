@@ -107,6 +107,7 @@ export class NoticiasService {
       categorias: [],
       tags: []
     };
+    console.log(noticia)
     return this.http.post(this.API_URL, noticia, options);
   }
 
@@ -121,4 +122,23 @@ export class NoticiasService {
     dados.append('foto', foto);
     return this.http.put(this.API_URL + id + '/foto/', dados, options);
   }
+
+  public publicar(noticia){
+    const id_autor =this.autores.encontrar(noticia.autor_id)
+    const options = this.getHeaders();
+    console.log(noticia.publicada);
+    noticia.publicada = true;
+    noticia.autor_id = 1;
+    console.log(noticia.publicada);
+    
+    const url = this.API_URL + noticia.id + '/'
+    return this.http.put(url, noticia, options)
+
+  }
+
+  public isEditor(){
+    ;
+    return true;
+  }
+
 }

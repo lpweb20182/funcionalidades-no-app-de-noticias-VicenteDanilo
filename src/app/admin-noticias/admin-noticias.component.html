@@ -8,6 +8,7 @@
     <tr>
       <th>#</th>
       <th>Título</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,11 @@
       </td>
       <td>
         {{noticia.titulo}}
+      </td>
+      <td >
+        <div *ngIf ="editor">
+          <button class="btn btn-primary float-right" (click)="publicar(noticia)">Publicar</button>
+        </div>
       </td>
     </tr>
   </tbody>
